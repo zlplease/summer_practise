@@ -9,8 +9,8 @@ const router = express.Router()
 router.post('/users/login', userCtrl.login)
 
 router.post('/users', [
-    body('user.username').notEmpty(),
-    body('user.password').notEmpty(),
+    body('user.username').notEmpty().withMessage('用户名不能为空'),
+    body('user.password').notEmpty().withMessage('密码不能为空'),
     body('user.email')
         .notEmpty().withMessage('邮箱不能为空')
         .isEmail().withMessage('邮箱格式不正确'),
